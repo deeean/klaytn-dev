@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mysql:
+    container_name: ken-baobab
+    image: klaytn/klaytn:v1.7.3
+    command:
+      - "ken"
+      - "--baobab"
+      - "--multichannel"
+      - "--rpc"
+      - "--rpcapi=admin,debug,klay,miner,net,personal,rpc,txpool,web3"
+      - "--rpcport=8551"
+      - "--rpcaddr=0.0.0.0"
+      - "--rpccorsdomain=*"
+      - "--rpcvhosts=*"
+      - "--ws"
+      - "--wsapi=admin,debug,klay,miner,net,personal,rpc,txpool,web3"
+      - "--wsaddr=0.0.0.0"
+      - "--wsorigins=*"
+      - "--datadir=/data"
+      - "--port=32323"
+      - "--subport=32324"
+      - "--srvtype=fasthttp"
+      - "--verbosity=3"
+      - "--syncmode=full"
+      - "--maxconnections=10"
+      - "--txpool.exec-slots.all=4096"
+      - "--txpool.nonexec-slots.all=4096"
+      - "--txpool.exec-slots.account=4096"
+      - "--txpool.nonexec-slots.account=4096"
+    volumes:
+      - /Volumes/data/baobab:/data
+    ports:
+      - "8551:8551"
+      - "8552:8552"
+    restart: always
