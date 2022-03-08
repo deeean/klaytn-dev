@@ -1,21 +1,21 @@
 version: '3.8'
 
 services:
-  mysql:
-    container_name: ken-baobab
+  baobab:
+    container_name: baobab
     image: klaytn/klaytn:v1.7.3
     command:
       - "ken"
       - "--baobab"
       - "--multichannel"
       - "--rpc"
-      - "--rpcapi=admin,debug,klay,miner,net,personal,rpc,txpool,web3"
+      - "--rpcapi=admin,mining,debug,klay,miner,net,personal,rpc,txpool,web3"
       - "--rpcport=8551"
       - "--rpcaddr=0.0.0.0"
       - "--rpccorsdomain=*"
       - "--rpcvhosts=*"
       - "--ws"
-      - "--wsapi=admin,debug,klay,miner,net,personal,rpc,txpool,web3"
+      - "--wsapi=admin,mining,debug,klay,miner,net,personal,rpc,txpool,web3"
       - "--wsaddr=0.0.0.0"
       - "--wsorigins=*"
       - "--datadir=/data"

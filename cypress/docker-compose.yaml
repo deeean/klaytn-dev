@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-  mysql:
-    container_name: ken-cypress
+  cypress:
+    container_name: cypress
     image: klaytn/klaytn:v1.7.3
     command:
       - "ken"
