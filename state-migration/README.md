@@ -1,4 +1,4 @@
-# state-migration
+# State Migration
 
 클레이튼 엔드포인트 노드 스토리지를 절약하기위해 State Migration을 진행하고 내용을 기록합니다.
 
