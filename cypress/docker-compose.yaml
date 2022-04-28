@@ -3,7 +3,7 @@ version: '3.8'
 services:
   cypress:
     container_name: cypress
-    image: klaytn/klaytn:v1.7.3
+    image: klaytn/klaytn:v1.8.3
     command:
       - "ken"
       - "--cypress"
@@ -18,7 +18,7 @@ services:
       - "--wsapi=admin,debug,klay,miner,net,personal,rpc,txpool,web3"
       - "--wsaddr=0.0.0.0"
       - "--wsorigins=*"
-      - "--datadir=/data"
+      - "--datadir=/chaindata"
       - "--port=32323"
       - "--subport=32324"
       - "--srvtype=fasthttp"
@@ -30,7 +30,7 @@ services:
       - "--txpool.exec-slots.account=4096"
       - "--txpool.nonexec-slots.account=4096"
     volumes:
-      - /Volumes/data/cypress:/data
+      - /Users/dean/chaindata/cypress:/chaindata
     ports:
       - "8551:8551"
       - "8552:8552"
