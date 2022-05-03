@@ -1,19 +1,19 @@
 # State Migration
 
-클레이튼 엔드포인트 노드 스토리지를 절약하기위해 State Migration을 진행하고 내용을 기록합니다.
-
-# Documentation
-- [medium](https://medium.com/klaytn/klaytn-v1-5-0-state-migration-%EB%85%B8%EB%93%9C-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%A0%88%EC%95%BD%ED%95%98%EA%B8%B0-358dd77d9fd6)
-
-# Reports
 > 주의: EKS 환경에서 테스트하였습니다.
 
-cypress기준 m5.4xlarge 에서 메모리가 부족하여 evicted 됩니다. (peak 63.2GB)
+- cypress 기준 m5.4xlarge 에서 메모리가 부족합니다.
+- m5.8xlarge에서 성공적으로 State Migration 하였습니다.
+- 간헐적으로 블럭 동기화가 느려지는 경우가 발생하였습니다. (최대 1500 블럭)
+- 약 10일 정도가 소요되었습니다.
+- 용량은 300GB를 확보하였습니다.
 
-m5.8xlarge또는 비슷한 사양을 사용해야합니다. (peak 110.0GB)
+개인적으로 State Migration을 직접 하는것보다.
 
-또 블럭 동기화가 느려지는 경우가 발생합니다. 최대 1500블럭까지 차이가 나는 경우도 있습니다. (State Migration 하여 그런것이 아닐 수 있습니다.)
+스냅샷된 체인데이터를 받아서 새로 띄우는것이 비용, 시간적으로 좋습니다.
 
-약 10일 정도가 소요되었습니다.
+물론 새로 띄우는 과정에서 API를 정상적으로 사용하기 힘들 수 있습니다.
 
-용량은 300GB를 확보하였습니다.
+그래서 약간 불편하지만 생각한 방법이 띄워져있는 KEN1을 계속 사용하다 KEN2를 새로 띄우고 Load Balancer 에서
+
+KEN2로 유도를 한뒤 KEN1번을 죽이는 방법으로 비교적 저렴하게 무중단을 구현할 수 있습니다.
